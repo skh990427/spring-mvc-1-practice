@@ -69,11 +69,18 @@ public class BasicItemController {
         return "basic/item";
     }
 
-    @PostMapping("/add")
+//    @PostMapping("/add")
     public String addItemV4(Item item) {
         itemRepository.save(item);
 
         return "basic/item";
+    }
+
+    @PostMapping("/add")
+    public String addItemV5(Item item) {
+        itemRepository.save(item);
+
+        return "redirect:/basic/items/" + item.getId(); //URL 인코딩이 안돼서 위험함(URL은 띄어쓰기 한글 등이 들어가면 안됨)
     }
 
     @GetMapping("/{itemId}/edit")
